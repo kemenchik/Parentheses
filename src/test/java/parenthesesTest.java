@@ -6,21 +6,17 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class parenthesesTest {
-    public boolean allClosed(String s) {
-        return new Parentheses().isTrue(s);
-    }
-
     @ParameterizedTest()
-    @ValueSource(strings = {"()()", "(())(())()()((()()))"})
+    @ValueSource(strings = {"()()", "(()(())())", "((()))"})
     @EmptySource
     void testParenthesesTrue(String word) {
-        assertTrue(allClosed(word));
+        assertTrue(new Parentheses().isSymmetric2(word));
     }
 
     @ParameterizedTest()
     @ValueSource(strings = {"()))", "((()", "))((", "()()()))"})
     @NullSource
     void testParenthesesFalse(String word) {
-        assertFalse(allClosed(word));
+        assertFalse(new Parentheses().isSymmetric(word));
     }
 }
