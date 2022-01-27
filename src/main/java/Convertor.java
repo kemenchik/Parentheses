@@ -5,9 +5,9 @@ public class Convertor {
         phoneNumber = phoneNumber.toUpperCase();
 
         StringBuilder result = new StringBuilder();
-        int number = 0;
 
         for (int i = 0; i < phoneNumber.length(); i++) {
+            int number = -1;
 
             char letter = phoneNumber.charAt(i);
 
@@ -19,7 +19,7 @@ public class Convertor {
                 number = Character.getNumericValue(letter);
             }
 
-            if (number == 0) {
+            if (number == -1) {
                 throw new IllegalArgumentException("Invalid symbol");
             }
 
